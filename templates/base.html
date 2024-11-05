@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Панель администратора</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('admin.admin_panel') }}">Управление администраторами</a></li>
+                <li><a href="{{ url_for('currencies.get_currencies') }}">Список валют</a></li>
+                <li><a href="{{ url_for('exchangers.get_exchangers') }}">Обменники</a></li>
+                <li><a href="{{ url_for('currencies.add_currency') }}">Добавить валюту</a></li>
+                <li><a href="{{ url_for('gates.add_gate') }}">Добавить Ворота</a></li>
+                <li><a href="{{ url_for('auth.login_page') }}">Авторизация</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

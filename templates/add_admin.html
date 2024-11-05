@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить администратора</title>
+</head>
+<body>
+    <h1>Добавить администратора</h1>
+    <form action="{{ url_for('admin.add_admin') }}" method="post">
+        <label for="login">Логин:</label>
+        <input type="text" id="login" name="login" required><br><br>
+
+        <label for="permissions">Права доступа:</label>
+        <input type="number" id="permissions" name="permissions" required><br><br>
+
+        <label for="allowed_domains">Разрешенные домены (через запятую):</label>
+        <input type="text" id="allowed_domains" name="allowed_domains"><br><br>
+
+        <button type="submit">Добавить администратора</button>
+    </form>
+    <a href="{{ url_for('admin.admin_panel') }}">Назад к панели администратора</a>
+</body>
+</html>

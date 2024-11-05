@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обменники</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Обменники</h1>
+    </header>
+    <main>
+        <h2>Список обменников</h2>
+        <ul>
+            {% for exchanger in exchangers %}
+                <li>
+                    {{ exchanger }} - Статус: {{ statuses[exchanger] }}
+                    <form method="POST" action="/exchangers/status/update" style="display:inline;">
+                        <input type="hidden" name="exchangerDomain" value="{{ exchanger }}">
+                        <select name="newStatus">
+                            <option value="0">Неактивен</option>
+                            <option value="1">Активен</option>
+                        </select>
+                        <button type="submit">Обновить статус</button>
+                    </form>
+                </li>
+            {% else %}
+                <li>Нет доступных обменников.</li>
+            {% endfor %}
+        </ul>
+    </main>
+    <footer>
+        <p>© 2024 Admin Panel</p>
+    </footer>
+</body>
+</html>

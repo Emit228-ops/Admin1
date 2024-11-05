@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить валюту</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Добавить валюту</h1>
+    </header>
+    <main>
+        <form method="POST">
+            <label for="name">Название:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="shortName">Короткое имя:</label>
+            <input type="text" id="shortName" name="shortName" required>
+
+            <label for="type">Тип валюты:</label>
+            <select id="type" name="type" required>
+                <option value="0">Криптовалюта</option>
+                <option value="1">Фиат</option>
+                <option value="2">Платежная система</option>
+            </select>
+
+            <div id="crypto-fields">
+                <label for="gate_name">Название гейта:</label>
+                <input type="text" id="gate_name" name="gate_name">
+
+                <label for="exchangerDomain">Домен обменника:</label>
+                <input type="text" id="exchangerDomain" name="exchangerDomain">
+
+                <label for="wallet_address">Адрес кошелька:</label>
+                <input type="text" id="wallet_address" name="wallet_address">
+
+                <label for="networkId">ID сети (если существует):</label>
+                <input type="text" id="networkId" name="networkId">
+
+                <label for="network_name">Название новой сети:</label>
+                <input type="text" id="network_name" name="network_name">
+
+                <label for="hasTag">Сеть имеет тег:</label>
+                <input type="checkbox" id="hasTag" name="hasTag">
+
+                <label for="hasMemo">Сеть имеет мему:</label>
+                <input type="checkbox" id="hasMemo" name="hasMemo">
+
+                <label for="approvesRequired">Необходимое количество подтверждений:</label>
+                <input type="number" id="approvesRequired" name="approvesRequired" min="0">
+
+                <label for="existingNetworkIds">Существующие ID сетей (через запятую):</label>
+                <input type="text" id="existingNetworkIds" name="existingNetworkIds">
+            </div>
+
+            <label for="isPopular">Популярная валюта:</label>
+            <input type="checkbox" id="isPopular" name="isPopular">
+
+            <label for="iconPath">Путь к иконке:</label>
+            <input type="text" id="iconPath" name="iconPath">
+
+            <button type="submit">Добавить валюту</button>
+        </form>
+    </main>
+</body>
+</html>

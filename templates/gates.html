@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Список шлюзов</h2>
+<a href="{{ url_for('gates.add_gate') }}">Добавить новый шлюз</a>
+
+{% if gates %}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Кол-во кошельков</th>
+        <th>Удаление</th>
+    </tr>
+    {% for gate in gates %}
+    <tr>
+        <td>{{ gate.id }}</td>
+        <td>{{ gate.name }}</td>
+        <td>{{ gate.walletsCount }}</td>
+        <td>
+            <form action="{{ url_for('gates.delete_gate') }}" method="post">
+                <input type="hidden" name="id" value="{{ gate.id }}">
+                <button type="submit">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Шлюзы не найдены.</p>
+{% endif %}
+{% endblock %}

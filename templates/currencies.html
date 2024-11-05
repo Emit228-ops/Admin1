@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список валют</title>
+</head>
+<body>
+    <h1>Список валют</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Короткое имя</th>
+            <th>Тип</th>
+            <th>Путь к иконке</th>
+        </tr>
+        {% for currency in currencies %}
+        <tr>
+            <td>{{ currency.id }}</td>
+            <td>{{ currency.name }}</td>
+            <td>{{ currency.shortName }}</td>
+            <td>{{ currency.type }}</td>
+            <td>{{ currency.iconPath }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

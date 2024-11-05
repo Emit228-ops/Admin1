@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить Ворота</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Добавить Ворота</h1>
+    </header>
+    <main>
+        <form method="POST" action="/gates/add">
+            <label for="name">Имя ворот:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="exchangerDomain">Домен обменника:</label>
+            <input type="text" id="exchangerDomain" name="exchangerDomain" required>
+
+            <label for="address">Адрес кошелька:</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="currencyId">ID валюты:</label>
+            <input type="text" id="currencyId" name="currencyId" required>
+
+            <label for="networkId">ID сети:</label>
+            <input type="text" id="networkId" name="networkId" required>
+
+            <label for="tag">Тег:</label>
+            <input type="text" id="tag" name="tag" required>
+
+            <label for="memo">Мемо:</label>
+            <input type="text" id="memo" name="memo" required>
+
+            <button type="submit">Добавить Ворота</button>
+        </form>
+
+        <h2>Существующие Ворота</h2>
+        <ul>
+            {% for gate in gates %}
+                <li>
+                    ID: {{ gate.id }}, Имя: {{ gate.name }}, Количество Кошельков: {{ gate.walletsCount }}
+                    <form method="POST" action="/gates/delete" style="display:inline;">
+                        <input type="hidden" name="id" value="{{ gate.id }}">
+                        <button type="submit">Удалить</button>
+                    </form>
+                </li>
+            {% else %}
+                <li>Нет существующих ворот.</li>
+            {% endfor %}
+        </ul>
+    </main>
+    <footer>
+        <p>© 2024 Admin Panel</p>
+    </footer>
+</body>
+</html>
